@@ -220,7 +220,7 @@ exports.post = function(req, res){
             
             // send email
             let html = "<h3>Matrimap</h3><h4>Nouveau Message</h4><p>Bonjour. L'utilisateur " + req.user.userName + " a posté un nouveau message dans la conversation '" + discussion.subject + "'</p><p>A bientôt!</p><p>Equipe Matrimap</p>"
-            async(discussion.participants, function(part, callback){
+            async.each(discussion.participants, function(part, callback){
                 User.findById(part, (err, doc)=>{
                     mailer.sendHtmlMail(doc.emailAddress, "Nouveau Message dans '" + discussion.subject +"'" , html);
                     callback();
