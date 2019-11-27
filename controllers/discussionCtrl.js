@@ -172,17 +172,22 @@ exports.new = function(req, res){
                 
                 // statistics, admin
                 // send email to participants
-                incoming.participants.forEach(participant => {
-                    let html = "<h3>Matrimap</h3><h4>Nouvelle Conversation</h4><p>Bonjour. Vous avez été ajouté à une nouvelle conversation privée par " + req.user.userName + "</p><p>A bientôt!</p><p>Equipe Matrimap</p>"
-    
-                    mailer.sendHtmlMail(participant.emailAddress, "Nouvelle Conversation", html);
+                let html = "<h3>Matrimap</h3><h4>Nouvelle Conversation</h4><p>Bonjour. Vous avez été ajouté à une nouvelle conversation privée par " + req.user.userName + "</p><p>A bientôt!</p><p>Equipe Matrimap</p>"
+                
+                async.each(incoming.participants, function(part, callback){
+                    User.findById(part, (err, doc)=>{
+                        if(req.user.id !== part){
+                            mailer.sendHtmlMail(doc.emailAddress, "Nouveau Message dans '" + discussion.subject +"'" , html);
+                        }
+                        callback();
+                    })
+                }, err => {
+                    // send response
+                    return res.json({message: "La discussion a été crée", type: "success"});
                 })
-
                 // notification
                 
 
-                // send response
-                return res.json({message: "La discussion a été crée", type: "success"});
             });
         });
     });
@@ -222,6 +227,7 @@ exports.post = function(req, res){
             let html = "<h3>Matrimap</h3><h4>Nouveau Message</h4><p>Bonjour. L'utilisateur " + req.user.userName + " a posté un nouveau message dans la conversation '" + discussion.subject + "'</p><p>A bientôt!</p><p>Equipe Matrimap</p>"
             async.each(discussion.participants, function(part, callback){
                 User.findById(part, (err, doc)=>{
+
                     mailer.sendHtmlMail(doc.emailAddress, "Nouveau Message dans '" + discussion.subject +"'" , html);
                     callback();
                 })
