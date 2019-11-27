@@ -52,7 +52,7 @@ app.use(bodyParser.urlencoded({
 //fixes an issue with a depricated default in Mongoose.js
 mongoose.set("useCreateIndex", true);
 mongoose.set('useFindAndModify', false);
-mongoose.connect(`mongodb+srv://willianZ:${dbPassword}@${dbUrl}/${dbCollection}`, {useNewUrlParser: true})
+mongoose.connect(`mongodb+srv://willianZ:${dbPassword}@${dbUrl}`, {useNewUrlParser: true})
     .then(_ => console.log("Connected Successfully to MongoDB"))
     .catch(err => console.error(err));
 
