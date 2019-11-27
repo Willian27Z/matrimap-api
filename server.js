@@ -9,6 +9,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 2727;
 const dbPort = process.env.DB_PORT || 27017;
 const dbUrl = process.env.DB_URL || "localhost";
+const dbPassword = process.env.DB_PASSWORD;
 const dbCollection = process.env.DB_COLLECTION || "auth-test";
 
 
@@ -51,7 +52,7 @@ app.use(bodyParser.urlencoded({
 //fixes an issue with a depricated default in Mongoose.js
 mongoose.set("useCreateIndex", true);
 mongoose.set('useFindAndModify', false);
-mongoose.connect(`mongodb://${dbUrl}/${dbCollection}`, {useNewUrlParser: true})
+mongoose.connect(`mongodb+srv://willianZ:${dbPassword}@${dbUrl}/${dbCollection}`, {useNewUrlParser: true})
     .then(_ => console.log("Connected Successfully to MongoDB"))
     .catch(err => console.error(err));
 
@@ -87,6 +88,7 @@ app.use((req,res,next) => {
 app.use("/js", express.static(path.normalize(__dirname + "/assets/js")));
 app.use("/img", express.static(path.normalize(__dirname + "/assets/img")));
 app.use("/css", express.static(path.normalize(__dirname + "/assets/css")));
+app.use("/app", express.static(path.normalize(__dirname + "/app")));
 
 
 /******************************* 
