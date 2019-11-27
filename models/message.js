@@ -2,8 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Comments = require('./comment.js');
 const ObjectId = mongoose.Schema.Types.ObjectId;
+
+// A Scrapbook message
 const MessageSchema = new Schema({
-    user: {
+    "_id": false,
+    author: {
+        type: ObjectId, // for messages posted: this is who the user posted to | for messages received: from whom
+        required: true
+    },
+    recipient: {
         type: ObjectId, // for messages posted: this is who the user posted to | for messages received: from whom
         required: true
     },
@@ -13,7 +20,8 @@ const MessageSchema = new Schema({
     },
     date: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     comments: [Comments]
 });

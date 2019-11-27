@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
-const messages = require('discussionMessage');
+const messages = require('./discussionMessage');
+
+// A discussion object
 const DiscussionSchema = new Schema({
     owner: {
         type: ObjectId, // who can delete this discussion
@@ -19,4 +21,4 @@ const DiscussionSchema = new Schema({
     }
 });
 
-module.exports = Discussion = mongoose.model('Discussion', DiscussionSchema);
+module.exports = Discussion = mongoose.model('Discussion', DiscussionSchema, 'discussions');

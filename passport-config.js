@@ -24,8 +24,8 @@ module.exports = passport => {
                     return done(null, {
                         id: user.id,
                         userName: user.userName,
-                        email: user.email,
-                        role: user.role
+                        email: user.emailAddress,
+                        admin: user.admin
                     });
                 }
                 return done(null, false);

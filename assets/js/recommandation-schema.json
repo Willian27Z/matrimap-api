@@ -1,0 +1,180 @@
+{
+  "schema": {
+    "type": "object",
+    "required": [
+      "owner"
+    ],
+    "properties": {
+      "lieu": {
+        "type": "object",
+        "description": "Lieu de cérémonie ou fête",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société",
+            "description": "La société ou personne que vous avez engagé"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis",
+            "description": "Racontez votre expérience"
+          }
+        }
+      },
+      "traiteur": {
+        "type": "object",
+        "description": "Traiteur",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "decorations": {
+        "type": "object",
+        "description": "Décorations",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "fleuriste": {
+        "type": "object",
+        "description": "Fleuriste",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "musique": {
+        "type": "object",
+        "description": "Musique",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "artiste": {
+        "type": "object",
+        "description": "Artiste",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "vetements": {
+        "type": "object",
+        "description": "Tenue des mariés",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "photography": {
+        "type": "object",
+        "description": "Photographie",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "video": {
+        "type": "object",
+        "description": "Vidéo",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "souvenir": {
+        "type": "object",
+        "description": "Souvenir",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "luneDeMiel": {
+        "type": "object",
+        "description": "Lune De Miel",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      },
+      "planner": {
+        "type": "object",
+        "description": "Wedding Planner",
+        "properties": {
+          "societe": {
+            "type": "string",
+            "title": "Société"
+          },
+          "avis": {
+            "type": "textarea",
+            "title": "Votre avis"
+          }
+        }
+      }
+    }
+  }
+}

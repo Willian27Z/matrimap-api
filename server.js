@@ -1,3 +1,4 @@
+'use strict'
 /******************************* 
 *****ENVIRONMENT VARIABLES******
 *******************************/
@@ -21,7 +22,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const path = require("path");
-
 const app = express();
 
 /******************************* 
@@ -29,15 +29,14 @@ const app = express();
 *******************************/
 
 const apiRoutes = require("./routes/api");
-const authRoutes = require("./routes/user")
+const authRoutes = require("./routes/user");
+const socketIO = require("./socket-io");
 
 /******************************* 
 **********STATIC FILES**********
 *******************************/
 
-app.use("/js", express.static(path.normalize(__dirname + "/assets/js")));
-app.use("/img", express.static(path.normalize(__dirname + "/assets/img")));
-app.use("/css", express.static(path.normalize(__dirname + "/assets/css")));
+
 
 /******************************* 
 **********MIDDLEWARE************
@@ -51,6 +50,7 @@ app.use(bodyParser.urlencoded({
 //  Mongoose
 //fixes an issue with a depricated default in Mongoose.js
 mongoose.set("useCreateIndex", true);
+mongoose.set('useFindAndModify', false);
 mongoose.connect(`mongodb://${dbUrl}/${dbCollection}`, {useNewUrlParser: true})
     .then(_ => console.log("Connected Successfully to MongoDB"))
     .catch(err => console.error(err));
@@ -84,6 +84,11 @@ app.use((req,res,next) => {
     }
 });
 
+app.use("/js", express.static(path.normalize(__dirname + "/assets/js")));
+app.use("/img", express.static(path.normalize(__dirname + "/assets/img")));
+app.use("/css", express.static(path.normalize(__dirname + "/assets/css")));
+
+
 /******************************* 
  *************ROUTES*************
  *******************************/
@@ -104,3 +109,5 @@ app.use(function (req, res) {
 const httpServer = app.listen(PORT, function(){
     console.log("Server listening at port: " + PORT);
 });
+
+socketIO.listen(httpServer);
