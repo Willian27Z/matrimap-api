@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const mailer = require('../mailing');
 
 exports.view = function(req, res) {
     console.log("entered GET 'api/profile/:id' route, execution exports.view on userCtrl.js");

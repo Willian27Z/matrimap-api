@@ -2,6 +2,7 @@ const User = require('../models/user');
 const Discussion = require('../models/discussion');
 const async = require('async');
 const mongoose = require('mongoose');
+const mailer = require('../mailing');
 
 
 // retrieve a list with all discussions which user participates or owns

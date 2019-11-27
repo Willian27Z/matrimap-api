@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const Recommend = require('../models/recommends');
 const ObjectId = require('mongoose').Types.ObjectId;
+const mailer = require('../mailing');
 
 
 exports.myRecommends = function(req, res) {

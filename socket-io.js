@@ -277,8 +277,8 @@ const sendStats = function(socketServer) {
                         // add each message to count    
                         messages += discussion.messages.length;
                     });
-                    console.log("stats:");
-                    console.log({messages: messages, onlineUsers: connectedUsers.length});
+                    // console.log("stats:");
+                    // console.log({messages: messages, onlineUsers: connectedUsers.length});
                     socketServer.sockets.emit("stats", {messages: messages, onlineUsers: connectedUsers.length});
                 });
     

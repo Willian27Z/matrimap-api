@@ -1,5 +1,6 @@
 const async = require('async');
 const User = require('../models/user');
+const mailer = require('../mailing');
 
 // Handles view my messages for scrapbook (on myspace component)
 exports.view = function (req, res) {

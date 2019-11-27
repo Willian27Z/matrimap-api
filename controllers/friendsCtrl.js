@@ -1,6 +1,6 @@
 const async = require('async');
 const User = require('../models/user');
-
+const mailer = require('../mailing');
 
 // Retrieves a user's friend list and dynamically adds their current username and avatar
 exports.view = function(req, res) {
