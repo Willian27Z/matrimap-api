@@ -1,9 +1,10 @@
 {
-  "name": "matrimap-api",
+  "name": "matrimap",
   "version": "1.0.0",
   "description": "Static Server and RESTful API for Matrimap application",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Willian Zolnowski",
@@ -22,5 +23,8 @@
     "passport-jwt": "^4.0.0",
     "password-generator": "^2.2.3",
     "socket.io": "^2.3.0"
+  },
+  "engines": {
+    "node": "10.15.1"
   }
 }
